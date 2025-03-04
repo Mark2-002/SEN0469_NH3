@@ -53,7 +53,7 @@ void send_uart_command(const uint8_t *cmd, size_t length)
     {
         uart_poll_out(uart_dev, cmd[i]);
         // k_usleep(100); // Fine-tuned delay
-    }
+    } 
 }
 
 /* Receive data from UART */
@@ -90,6 +90,7 @@ int fetchData(){
     err = receive_uart_data(rx_buf, sizeof(rx_buf), K_MSEC(100));
     if (err == 0)
     {
+
         if (rx_buf[0] == 0xFF && rx_buf[1] == 0x86)
         {
             NH3_Value = (rx_buf[2] << 8) | rx_buf[3];
